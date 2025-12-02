@@ -1,0 +1,15 @@
+Nazwa docs
+Trigger
+Uruchamia się automatycznie przy push lub pull_request, ale wtedy kiedy zmiany dotyczą plików z katalogu docs/**
+
+Jeden job o nazwie docs, który działa w środowisku ubuntu
+
+Job zawiera cztery kroki:
+
+1. Checkout – pobiera aktualny kod repozytorium.
+
+2. Install sphinx and manim env – instaluje potrzebne pakiety: aktualizuje pip, doinstalowuje systemowe zależności, a następnie instalacje z plików docs/requirements.txt i głównego requirements.txt.
+
+3. Build document with Sphinx – wchodzi do katalogu docs, ustawia zmienne środowiskowe i uruchamia polecenie make html, aby zbudować dokumentację.
+
+4. Deploy to GitHub Pages – uruchamiany tylko przy pushu; wysyła wygenerowaną dokumentację na gałąź gh-pages przy użyciu akcji github-pages-deploy-action i tokenu z sekretów.
