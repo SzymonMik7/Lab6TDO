@@ -1,0 +1,9 @@
+Ten kod to konfiguracja GitHub Actions, która automatycznie buduje i wypycha obraz Docker na GitHub Container Registry (GHCR) po każdej zmianie w gałęzi main.
+
+Aktywacja: Akcja jest uruchamiana po pushu do gałęzi main.
+Job: Zdefiniowany job o nazwie docker-deploy działa na systemie Ubuntu.
+Kroki:
+Sprawdzenie kodu repozytorium (akcja actions/checkout@v4).
+Logowanie do GHCR przy użyciu tokena GitHub.
+Budowanie obrazu Docker z aktualnego katalogu i tagowanie go jako latest.
+Wypychanie obrazu do GHCR pod odpowiedni adres.
