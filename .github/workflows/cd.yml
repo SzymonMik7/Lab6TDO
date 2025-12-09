@@ -12,6 +12,11 @@ jobs:
       run: echo "${{ github.token }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
     - name: Build and push
       run: |
-        docker tag $IMAGE:latest $IMAGE:${{ github.sha }}
-        docker build -t ghcr.io/szymonmik7/python-app:{tag} .
-        docker push ghcr.io/szymonmik7/python-app:{tag}
+        IMAGE=ghcr.io/szymonmik7/python-app
+
+        docker build -t $IMAGE:${{ github.sha }} .
+
+        docker tag $IMAGE:${{ github.sha }}
+
+        docker push $IMAGE:${{ github.sha }}
+
